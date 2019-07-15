@@ -1,0 +1,49 @@
+# imported pandas for data manipulataion
+# sklearn for prediction 
+# matplotlib to draw the plots.
+
+import pandas as pd
+from sklearn import linear_model
+import matplotlib.pyplot as plt
+
+# reading CSV file which is placed on my desktop 
+df = pd.read_csv('/Users/admin/Desktop/prices.csv')
+# assign labels to the X and Y axis.
+plt.xlabel('area (sq.ft)')
+plt.ylabel('price (USD)')
+# now scatter plot to view the data points.
+plt.scatter(df.area,df.price,color='red',marker='+')
+plt.plot(df.area,reg.predict(df[['area']]),color='blue')
+# creating object to train the data and predict the output.
+reg = linear_model.LinearRegression()
+reg.fit(df[['area']],df.price)
+
+
+# predicts the price of the 5000 sq. ft. area
+# this algorithm uses the (y = mx+c) formula to predict the prices of the areas.
+reg.predict([[5000]])
+
+
+
+# its not possible to predict output one by one, so here i am providing csv file which contains lot more values
+# to predict outputs.
+d = pd.read_csv('/Users/admin/Desktop/areas.csv')
+# prints the top 3 areas.
+d.head(3)
+
+# pass the newly created dataframe
+p = reg.predict(d)
+
+# creating the new column in the dataframe object with the name prices.
+d['prices'] = p
+# now exporting CSV file with the newly added column along with their corresponding predicted values.
+d.to_csv('/Users/admin/Desktop/prediction.csv',index=False)
+# show the table with prices and their areas.
+d
+
+# creating the new column in the dataframe object with the name prices.
+d['prices'] = p
+# now exporting CSV file with the newly added column along with their corresponding predicted values.
+d.to_csv('/Users/admin/Desktop/prediction.csv',index=False)
+# show the table with prices and their areas.
+d
